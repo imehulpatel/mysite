@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>US Wallet 1</title>
+
+<style>
+body {
+    font-family:Verdana,sans-serif;font-size:1.8em;
+}
+
+h2 {
+    text-align:center;
+}
+
+header,footer,section,article {
+    /*border:1px solid grey;*/
+    margin:5px;
+    margin-bottom:15px;
+    padding:8px;
+    background-color:white;
+}
+
+img {
+    margin:0px auto;
+    display:block
+}
+
+header,footer {
+    color:white;
+    background-color:#FFAB00;
+    margin-bottom:5px;
+    text-align:center;
+}
+
+section {
+    background-color:#ddd;
+}
+
+nav ul  {
+    margin:0;padding:0;
+}
+
+nav ul li {
+    display:inline; margin:5px;
+}
+
+article#button {
+    background-color:#FFAB00;
+    margin-top:0px;
+    margin-bottom:30px;
+    margin-left:20%;
+    margin-right:20%;
+    padding-bottom:10px;
+    height:100px;
+    text-align:center;
+    color:white;
+}
+
+
+#textboxid
+{
+    height:100px;
+    font-size:40pt;
+    align
+}
+
+</style>
+
+</head>
+
+<body onload="onload_event()">
+
+<header>
+    <h1>US Wallet 1</h1>
+</header>
+
+<section>
+<h2>Authentication</h2>
+
+<article>
+    
+    <form align="center">
+        <br><br>
+        <input id="textboxid" type="text" name="username" placeholder="User Name"><br><br>
+        <input id ="textboxid" type="password" name="password" placeholder="Password"><br><br>
+    </form>
+
+    <article id="button" onclick="return proceed_clicked()">
+        <h2> Proceed </h2>
+    </article>
+    
+</article>
+</section>
+
+<footer>
+    <p>&copy; 1994-2015 MasterCard</p>
+</footer>
+
+</body>
+<script>
+    var returnURL;
+    
+    function proceed_clicked()
+    {
+        window.location.href = returnURL;
+    }
+
+    function onload_event(){
+        returnURL = getQueryVariable("merchant");
+        
+        if( returnURL === false) {
+            var oldURL = document.referrer;
+            returnURL = oldURL;
+        }
+    }
+
+    function getQueryVariable(variable)
+    {
+        var query = window.location.search.substring(1);
+        var vars = query.split("&");
+        for (var i=0;i<vars.length;i++) {
+            var pair = vars[i].split("=");
+            if(pair[0] == variable)
+            {
+                return pair[1];
+            }
+        }
+        return false;
+    }
+
+</script>
+</html>
+
+
